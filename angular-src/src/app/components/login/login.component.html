@@ -1,0 +1,15 @@
+<div class="loginBox">
+  <div class="user">
+      </div>
+  <h2>Log In Here</h2>
+  <form>
+      <p>UserId</p>
+      <input type="text" name="userid" placeholder="Enter UserID" [(ngModel)]="userid">
+      <p>Password</p>
+      <input type="password" name="password" placeholder="Enter your password" [(ngModel)]="password">
+      <a>
+          <input type="submit" name="" value="LOGIN" (click)="onLoginSubmit()">
+      </a>
+      <a routerLink="#">Forget Password ?</a>
+  </form>
+</div>

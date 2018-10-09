@@ -1,0 +1,261 @@
+
+<div class="col-xs-12" style="height:50px;"></div>
+<div class="jumbotron">
+<div class="container" style="height: 500px;">
+
+  <!--buttons for admin-->
+  <div *ngIf=authService.adminLoggedIn()>
+      <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <ng-template #content let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Adding Employee or HR</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">Role:-
+                                  <select name="role" class="form-control" [(ngModel)]="role">
+                                  <option value="hr" >HR</option>
+                                  <option value="employee">Employee</option>
+                                </select>
+                            </div>                       
+                           <div class="form-group">Department:-
+                              <select name="department" class="form-control" [(ngModel)]="department" >
+                                  <option value="designer">Designer</option>
+                                  <option value="developer">Developer</option>
+                                  <option value="testing">Testing</option>
+                                </select>
+                            </div>
+                      
+                        <div class="form-group">
+                          <input type="text" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" >
+                        </div>
+                        <div class="form-group">
+                          <input type="text" [(ngModel)]="userid" class="form-control" name="userid" placeholder="Enter UserID" >
+                        </div>
+                        <div class="form-group">
+                          <input type="text" [(ngModel)]="email"class="form-control" name="email" placeholder="Enter Email" >
+                        </div>
+                        <div class="form-group">
+                          <input type="password" [(ngModel)]="password"class="form-control" name="password" placeholder="Enter Password">
+                        </div>
+                    
+                            
+                          </form>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" value="Submit" (click)="onAddEmpSubmit()">
+                    </div>
+                  </ng-template>
+                  
+                  <button class="btn btn-lg btn-outline-primary" (click)="open(content)" data-dismiss="content">Create Emp</button>
+          &nbsp; &nbsp;&nbsp;&nbsp;       
+                  <hr>
+            </div><!--but1 div end-->
+            <div class="col-xs-6">
+                <ng-template #content1 let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Delete Employee or HR</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="form-group">
+                          <input type="text" [(ngModel)]="userid" name="userid"class="form-control" placeholder="Enter userid" >
+                        </div>
+                      </form>       
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn-primary" value="Submit" (click)="onDelEmpSubmit()">
+                    </div>
+                  </ng-template>
+          
+                  <button class="btn-lg btn-outline-primary" (click)="open(content1)" data-dismiss="content">Delete Emp</button>
+                  
+                  <hr>
+            </div>
+          </div>
+      </div>
+      <br><br> 
+      </div>
+              
+      <!--hr buttons-->
+      
+      <div *ngIf=authService.hrLoggedIn()>
+        <div class="container">
+          <div class="row">
+              <div class="col-xs-6">
+                  <ng-template #content let-c="close" let-d="dismiss">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Edit Profile</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <input type="text" [(ngModel)]="userid" name="userid"class="form-control" placeholder="Enter UserID" disabled>
+                             </div>
+       
+                             <div class="form-group">
+                               <input type="text" [(ngModel)]="name" name="name"class="form-control" placeholder="Enter Name" >
+                             </div>
+                            
+                             <div class="form-group">
+                               <input type="text" [(ngModel)]="email" name="email"class="form-control" placeholder="Enter Email" >
+                             </div>
+                             <div class="form-group">
+                              <input type="text" [(ngModel)]="role" name="role"class="form-control" disabled>
+                            </div>
+                            <div class="form-group">
+                              <input type="text" [(ngModel)]="department"class="form-control" name="department" disabled>
+                            </div><div class="form-group">
+                              <input type="tel"maxlength="10" minlength="10" [(ngModel)]="phnum" name="phnum"class="form-control" placeholder="Enter phone-number" >
+                            </div>
+                            <div class="form-group">
+                              <input type="text" [(ngModel)]="address" name="address"class="form-control" placeholder="Enter Address">
+                            </div>
+                         
+                            </form>
+                      </div>
+                      <div class="modal-footer">
+                          <input type="submit" class="btn btn-primary" value="Submit" (click)="onEditProfileSubmit()">
+                      </div>
+                    </ng-template>
+                    
+                    <button class="btn btn-lg btn-outline-primary" align="right" (click)="open(content)" data-dismiss="content">Edit</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                    <hr>
+              </div><!--but1 div end-->
+              <div class="col-xs-6">
+                  <ng-template #content1 let-c="close" let-d="dismiss">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Status</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="userid" name="userid"class="form-control"   disabled>
+                           </div>
+                           <div class="form-group">
+                            <input type="text" [(ngModel)]="department" name="department"class="form-control"   disabled>
+                           </div> <div class="form-group">
+                            <input type="text" [(ngModel)]="date" name="date"class="form-control" placeholder="Enter Date (dd-mm-yyyy)" >
+                           </div> <div class="form-group">
+                            <input type="text" [(ngModel)]="time" name="time"class="form-control" placeholder="Enter Time" >
+                           </div>
+                           <div class="form-group">
+                            <input type="text" [(ngModel)]="title" name="title"class="form-control"  placeholder="Enter Title">
+                           </div>
+                           <div class="form-group">
+                            <textarea rows="4" cols="50" [(ngModel)]="status" name="status"class="form-control"  placeholder="Enter Status"></textarea>
+                           </div>
+                        </form>       
+                      </div>
+                      <div class="modal-footer">
+                          <input type="submit" class="btn-primary" value="Submit" (click)="onStatusSubmit()">
+                      </div>
+                    </ng-template>
+            
+                    <button class="btn-lg btn-outline-primary" (click)="open(content1)" data-dismiss="content">Status</button>
+                    
+                    <hr>
+              </div>
+            </div>
+        </div>
+        <br><br> 
+        </div>
+      
+      <!--emp buttons-->
+      <div *ngIf=authService.employeeLoggedIn()>
+        <div class="container">
+          <div class="row">
+              <div class="col-xs-6">
+                  <ng-template #content let-c="close" let-d="dismiss">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Edit</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <form>
+                             
+                          <div class="form-group">
+                           <input type="text" [(ngModel)]="userid" name="userid"class="form-control" placeholder="Enter UserID" disabled>
+                          </div>
+      
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="name" name="name"class="form-control" placeholder="Enter Name" >
+                          </div>
+                         
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="email" name="email"class="form-control" placeholder="Enter Email" >
+                          </div>
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="role" name="role"class="form-control" disabled>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="department" name="department"class="form-control" disabled>
+                          </div><div class="form-group">
+                            <input type="tel"maxlength=10 minlength="10" [(ngModel)]="phnum" name="phnum"class="form-control" placeholder="Enter phone-number" >
+                          </div>
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="address" name="address" placeholder="Enter Address"class="form-control" placeholder="Enter Address">
+                          </div>
+                              
+                            </form>
+                      </div>
+                      <div class="modal-footer">
+                          <input type="submit" class="btn btn-primary" value="Submit" (click)="onEditProfileSubmit()">
+                      </div>
+                    </ng-template>
+                    
+                    <button class="btn btn-lg btn-outline-primary" (click)="open(content)" data-dismiss="content">EDIT</button>
+                    
+                    <hr>
+              </div>
+             </div>
+           </div>
+       </div>
+      
+      
+      <b><h6>
+
+
+
+     {{user.role |  uppercase}}-ID :- <div class="card"> 
+      <div class="card-body">{{user.userid |  uppercase }}</div>
+     </div>
+     {{user.role |  uppercase}}-NAME :- <div class="card"> 
+        <div class="card-body">{{user.name |  uppercase }}</div>
+       </div>
+     {{user.role |  uppercase}}-EMAIL :- <div class="card"> 
+          <div class="card-body">{{user.email |  lowercase }}</div>
+         </div>
+     {{user.role |  uppercase}}-DEPARTMENT :- <div class="card"> 
+          <div class="card-body">{{user.department |  uppercase }}</div>
+       </div> 
+       {{user.role}}-PH-NUM :- <div class="card"> 
+        <div class="card-body">{{user.phnum}}</div>
+       </div>
+   {{user.role |  uppercase}}-ADDRESS :- <div class="card"> 
+        <div class="card-body">{{user.address |  uppercase }}</div>
+     </div> 
+
+<br>
+</h6></b>
+      
+  </div>
+</div>
